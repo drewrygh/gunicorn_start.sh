@@ -1,3 +1,5 @@
+#!/bin/bash
+
 NAME="NAME_APPLICATION"                                                  # Name of the application
 DJANGODIR=/path/to/project/dir                              # Django project directory
 SOCKFILE=/path/to/dir/with/gunicorn.sock      # we will communicte using this unix socket
@@ -15,6 +17,8 @@ cd $DJANGODIR
 source $SHAREDDIR/venv/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+export PYTHONPATH=mysql://user/pwd@localhost/database
+export DJANGO_CONFIGURATION=Production
 
 # Create the run directory if it doesn't exist
 RUNDIR=$(dirname $SOCKFILE)
